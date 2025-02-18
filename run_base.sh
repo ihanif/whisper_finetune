@@ -1,0 +1,44 @@
+python fine_tune_whipser.py \
+	--model_name="openai/whisper-base" \
+	--language="Pashto" \
+	--train_datasets="ihanif/common_voice_ps_20_0" \
+	--train_dataset_configs="ps" \
+	--train_dataset_splits="train+validation" \
+	--train_dataset_text_columns="sentence" \
+	--eval_datasets="ihanif/common_voice_ps_20_0" \
+	--eval_dataset_configs="ps" \
+	--eval_dataset_splits="test" \
+	--eval_dataset_text_columns="sentence" \
+	--model_index_name "Whisper Base Pashto" \
+	--num_steps 5000 \
+	--output_dir="./ps_base_v1" \
+	--train_batchsize 32 \
+	--eval_batchsize 16 \
+	--gradient_accumulation_steps 1 \
+	--logging_steps 25 \
+	--learning_rate="3e-7" \
+	--warmup 500 \
+	--eval_strategy="steps" \
+	--eval_steps="1" \
+	--save_strategy="steps" \
+	--save_steps="1" \
+	--generation_max_length="225" \
+	--length_column_name="input_length" \
+	--max_duration_in_seconds="30" \
+	--text_column_name="transcription" \
+	--freeze_feature_encoder="False" \
+	--report_to="tensorboard" \
+	--metric_for_best_model="wer" \
+	--greater_is_better="False" \
+	--load_best_model_at_end="True" \
+	--gradient_checkpointing \
+	--overwrite_output_dir \
+	--do_train \
+	--do_eval \
+	--predict_with_generate \
+	--do_normalize_eval \
+	--streaming="False" \
+	--use_auth_token \
+	--use_augmented_data="False" \
+	--use_processed_data="True" \
+	--push_to_hub
