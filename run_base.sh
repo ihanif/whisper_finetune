@@ -16,8 +16,8 @@ python fine_tune_whipser.py \
 	--eval_batchsize 16 \
 	--gradient_accumulation_steps 1 \
 	--logging_steps 25 \
-	--learning_rate="3e-7" \
-	--warmup 500 \
+	--learning_rate="5e-05" \
+	--warmup 1000 \
 	--eval_strategy="steps" \
 	--eval_steps="1" \
 	--save_strategy="steps" \
@@ -35,6 +35,7 @@ python fine_tune_whipser.py \
 	--overwrite_output_dir \
 	--do_train \
 	--do_eval \
+	--fp16 \
 	--predict_with_generate \
 	--do_normalize_eval \
 	--streaming="False" \
